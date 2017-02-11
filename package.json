@@ -1,0 +1,39 @@
+{
+  "name": "communityhack.io",
+  "version": "1.0.0",
+  "description": "Website for Vassar College's hackathon, CommunityHack 2017",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "body-parser": "^1.16.1",
+    "cookie-parser": "^1.4.3",
+    "debug": "^2.6.1",
+    "express": "^4.14.1",
+    "morgan": "^1.8.1",
+    "pg": "^6.1.2",
+    "pg-hstore": "^2.3.2",
+    "sequelize": "^3.30.2",
+    "sequelize-cli": "^2.5.1",
+    "serve-favicon": "^2.3.2",
+    "swig": "^1.4.2"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.18.7",
+    "gulp": "^3.9.1",
+    "gulp-jshint": "^2.0.4",
+    "gulp-nodemon": "^2.2.1",
+    "jshint": "^2.9.4",
+    "jshint-stylish": "^2.2.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zhanwenchen/communityhack.io.git"
+  },
+  "author": "Zhanwen Chen",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/zhanwenchen/communityhack.io/issues"
+  },
+  "homepage": "https://github.com/zhanwenchen/communityhack.io#readme"
+}
