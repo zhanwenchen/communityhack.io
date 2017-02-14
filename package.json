@@ -1,10 +1,10 @@
 {
   "name": "communityhack.io",
   "version": "1.0.0",
-  "description": "",
+  "description": "CommunityHack is an annual hackathon hosted by Vassar College",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server/bin/www"
+    "start": "node ./server/bin/www"
   },
   "repository": {
     "type": "git",
@@ -15,5 +15,14 @@
   "bugs": {
     "url": "https://github.com/zhanwenchen/communityhack.io/issues"
   },
-  "homepage": "https://github.com/zhanwenchen/communityhack.io#readme"
+  "homepage": "https://github.com/zhanwenchen/communityhack.io#readme",
+  "dependencies": {
+    "body-parser": "^1.16.1",
+    "cookie-parser": "^1.4.3",
+    "debug": "^2.6.1",
+    "express": "^4.14.1",
+    "morgan": "^1.8.1",
+    "pg": "^6.1.2",
+    "serve-favicon": "^2.3.2"
+  }
 }
