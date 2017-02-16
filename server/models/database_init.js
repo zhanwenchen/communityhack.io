@@ -51,6 +51,7 @@ pg.connect(connectionString, function(err, client, done) {
                 DECLARE \
                   newTeamId INTEGER; \
                 BEGIN \
+                    RAISE NOTICE \'In update_wrt_registration_func()\' ;\
                     IF (TG_OP = \'INSERT\') THEN \
                       IF (NEW.teammate) IS NULL THEN \
                         INSERT INTO teams (teamId) VALUES (DEFAULT) RETURNING teamId AS newTeamId; \

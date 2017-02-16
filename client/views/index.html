@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="nodeTodo">
+<html ng-app="CommunityHack">
   <head>
     <title>CommunityHack</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,20 +11,24 @@
       <div class="header">
         <h1>CommunityHack</h1>
         <hr>
-        <h1 class="lead">CommunityHack</h1>
+        <h1 class="lead">Register</h1>
       </div>
-      <div class="todo-form">
+      <div class="user-form">
         <form>
           <div class="form-group">
-            <input type="text" class="form-control input-lg" placeholder="Enter text..." ng-model="formData.text">
+            <input type="text" class="form-control input-lg" placeholder="firstName" ng-model="formData.firstName">
+            <input type="text" class="form-control input-lg" placeholder="lastName" ng-model="formData.lastName">
+            <input type="text" class="form-control input-lg" placeholder="email" ng-model="formData.email">
+            <input type="number" class="form-control input-lg" placeholder="year" ng-model="formData.year">
+            <input type="text" class="form-control input-lg" placeholder="teammate" ng-model="formData.teammate">
           </div>
-          <button type="submit" class="btn btn-primary btn-lg btn-block" ng-click="createTodo()">Add Todo</button>
+          <button type="submit" class="btn btn-primary btn-lg btn-block" ng-click="createUser()">Add User</button>
         </form>
       </div>
       <br>
-      <div class="todo-list">
-        <ul ng-repeat="todo in todoData">
-          <li><h3><input class="lead" type="checkbox" ng-click="deleteTodo(todo.id)">&nbsp;{{ todo.text }}</h3></li><hr>
+      <div class="user-list">
+        <ul ng-repeat="user in userData">
+          <li><h3><input class="lead" type="checkbox" ng-click="deleteUser(user.userId)">&nbsp;{{ user.firstName }}{{ user.lastName }}</h3></li><hr>
         </ul>
       </div>
     </div>

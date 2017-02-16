@@ -22,7 +22,9 @@ router.get('/api/v1/users', (req, res, next) => {
       return res.status(500).json({success: false, data: err});
     }
     // SQL Query > Select Data
-    const query = client.query('SELECT * FROM teams ORDER BY teamId ASC;');
+    const query = client.query(
+      'SELECT firstName, lastName, email, year FROM users \
+      ORDER BY lastName ASC;');
     // Stream results back one row at a time
     query.on('row', (row) => {
       results.push(row);
@@ -35,17 +37,17 @@ router.get('/api/v1/users', (req, res, next) => {
   });
 });
 
-// TODO: Error handling for length of todos
-router.post('/api/v1/teams', (req, res, next) => {
+// Create a new user by submitting a POST form
+router.post('/api/v1/users', (req, res, next) => {
   const results = [];
   // Grab data from http request
-  const data = {userId: req.body.userId,
-                firstName: req.body.firstName,
+  const data = {firstName: req.body.firstName,
                 lastName: req.body.lastName,
                 email: req.body.email,
                 year: req.body.year,
-                teammate: req.body.teammate,
-                teamId: req.body.teamId}
+                teammate: req.body.teammate
+                }
+  console.log("data: %j", data);
   // Get a Postgres client from the connection pool
   pg.connect(connectionString, (err, client, done) => {
     // Handle connection errors
@@ -55,28 +57,17 @@ router.post('/api/v1/teams', (req, res, next) => {
       return res.status(500).json({success: false, data: err});
     }
     // SQL Query > Insert Data
-    client.query('INSERT INTO users \
-                    (userId, \
-                    firstName, \
-                    lastName, \
-                    email, \
-                    year, \
-                    teammate) \
-                  VALUES \
-                    ($1, \
-                    $2, \
-                    $3, \
-                    $4, \
-                    $5 \
-                    );',
-    [data.userId,
-    data.firstName,
-    data.lastName,
-    data.email,
-    data.year,
-    data.teammate]);
-    // SQL Query > Select Data
-    const query = client.query('SELECT * FROM users ORDER BY userId ASC;');
+    client.query(
+      'INSERT INTO users \
+        (firstName, lastName, email, year, teammate) \
+      VALUES \
+        ($1, $2, $3, $4, $5);',
+      [data.firstName, data.lastName, data.email, data.year, data.teammate]
+    , (err) => {
+      console.log(err)
+    });
+    // Then get the updated results
+    const query = client.query('SELECT * FROM users ORDER BY lastName ASC;');
     // Stream results back one row at a time
     query.on('row', (row) => {
       results.push(row);
@@ -89,12 +80,18 @@ router.post('/api/v1/teams', (req, res, next) => {
   });
 });
 
+// Update an existing user
 router.put('/api/v1/users/:userId', (req, res, next) => {
   const results = [];
   // Grab data from the URL parameters
   const id = req.params.userId;
   // Grab data from http request
-  const data = {text: req.body.text, complete: req.body.complete};
+  const data = {firstName: req.body.firstName,
+                lastName: req.body.lastName,
+                email: req.body.email,
+                year: req.body.year,
+                teammate: req.body.teammate
+                }
   // Get a Postgres client from the connection pool
   pg.connect(connectionString, (err, client, done) => {
     // Handle connection errors
@@ -104,8 +101,17 @@ router.put('/api/v1/users/:userId', (req, res, next) => {
       return res.status(500).json({success: false, data: err});
     }
     // SQL Query > Update Data
-    client.query('UPDATE items SET text=($1), complete=($2) WHERE id=($3)',
-    [data.text, data.complete, id]);
+    client.query(
+      'UPDATE users SET \
+        firstName = ($1), \
+        lastName = ($2),  \
+        email = ($3), \
+        year = ($4), \
+        teammate = ($5) \
+      WHERE userId = ($6) \
+      ;',
+      [data.firstName, data.lastName, data.email, data.year, data.teammate, id]
+    );
     // SQL Query > Select Data
     const query = client.query("SELECT * FROM items ORDER BY id ASC");
     // Stream results back one row at a time
@@ -120,10 +126,10 @@ router.put('/api/v1/users/:userId', (req, res, next) => {
   });
 });
 
-router.delete('/api/v1/todos/:todo_id', (req, res, next) => {
+router.delete('/api/v1/users/:userId', (req, res, next) => {
   const results = [];
   // Grab data from the URL parameters
-  const id = req.params.todo_id;
+  const id = req.params.userId;
   // Get a Postgres client from the connection pool
   pg.connect(connectionString, (err, client, done) => {
     // Handle connection errors
@@ -133,9 +139,9 @@ router.delete('/api/v1/todos/:todo_id', (req, res, next) => {
       return res.status(500).json({success: false, data: err});
     }
     // SQL Query > Delete Data
-    client.query('DELETE FROM items WHERE id=($1)', [id]);
+    client.query('DELETE FROM users WHERE id=($1)', [id]);
     // SQL Query > Select Data
-    var query = client.query('SELECT * FROM items ORDER BY id ASC');
+    var query = client.query('SELECT firstName, lastName, email, year FROM users ORDER BY lastName ASC;');
     // Stream results back one row at a time
     query.on('row', (row) => {
       results.push(row);

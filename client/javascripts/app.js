@@ -1,33 +1,35 @@
-angular.module('nodeTodo', [])
+angular.module('CommunityHack', [])
 .controller('mainController', ($scope, $http) => {
   $scope.formData = {};
-  $scope.todoData = {};
-  // Get all todos
-  $http.get('/api/v1/todos')
+  $scope.userData = {};
+  // Get all users
+  $http.get('/api/v1/users')
   .success((data) => {
-    $scope.todoData = data;
+    $scope.userData = data;
     console.log(data);
   })
   .error((error) => {
     console.log('Error: ' + error);
   });
-  // Create a new todo
-  $scope.createTodo = () => {
-    $http.post('/api/v1/todos', $scope.formData)
+
+  // Create a new user
+  // TODO: INPUT Validation Exception Handling
+  $scope.createUser = () => {
+    $http.post('/api/v1/users', $scope.formData)
     .success((data) => {
       $scope.formData = {};
-      $scope.todoData = data;
+      $scope.userData = data;
       console.log(data);
     })
     .error((error) => {
       console.log('Error: ' + error);
     });
   };
-  // Delete a todo
-  $scope.deleteTodo = (todoID) => {
-    $http.delete('/api/v1/todos/' + todoID)
+  // Delete a user
+  $scope.deleteUser = (userId) => {
+    $http.delete('/api/v1/users/' + userId)
     .success((data) => {
-      $scope.todoData = data;
+      $scope.userData = data;
       console.log(data);
     })
     .error((data) => {
