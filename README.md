@@ -24,4 +24,4 @@ After which, quit the psql command line to return to your terminal by
 
 4. Initialize the backend database by
 (Under the project directory)
-$ node
+$ node server/models/database_init.js
