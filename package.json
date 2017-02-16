@@ -24,5 +24,9 @@
     "morgan": "^1.8.1",
     "pg": "^6.1.2",
     "serve-favicon": "^2.3.2"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "chai-http": "^3.0.0"
   }
 }

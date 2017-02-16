@@ -1,14 +1,14 @@
 const pg = require('pg');
-const connectionString = process.env.DATABASE_URL || 'postgres://localhost:5432/communityhack';
+const connectionString = process.env.DATABASE_URL || 'postgres://localhost:5432/communityhack_test';
 
 pg.connect(connectionString, function(err, client, done) {
 
-  client.query('DROP TABLE IF EXISTS teams, users, teamMembers CASCADE;',
+  client.query('DROP TABLE IF EXISTS teams, users, teamMembers, logins CASCADE;',
     (err, result) => {
-      console.log((err) ? `failed to drop tables\n` + err : 'successfully dropped tables');
+      console.log((err) ? `failed to drop 4 tables\n` + err : 'successfully dropped 4 tables');
     });
 
-  client.query('CREATE TABLE teams(teamId SERIAL PRIMARY KEY)',
+  client.query('CREATE TABLE teams(teamId SERIAL PRIMARY KEY);',
     (err, result) => {
       console.log((err) ? `failed to create teams table\n` + err : 'successfully created teams table');
   });
@@ -17,7 +17,7 @@ pg.connect(connectionString, function(err, client, done) {
                   userId SERIAL PRIMARY KEY, \
                   firstName TEXT NOT NULL, \
                   lastName TEXT NOT NULL, \
-                  email TEXT NOT NULL, \
+                  email TEXT UNIQUE NOT NULL, \
                   year INTEGER NOT NULL, \
                   teammate INTEGER REFERENCES users (userId), \
                   teamId INTEGER REFERENCES teams (teamId) \
@@ -32,6 +32,14 @@ pg.connect(connectionString, function(err, client, done) {
               )',
     (err, result) => {
       console.log((err) ? `failed to create teamMembers table\n` + err : 'successfully created teamMembers table');
+  });
+
+  client.query('CREATE TABLE logins( \
+                  userId INTEGER REFERENCES users (userId), \
+                  passwordHash TEXT NOT NULL \
+              )',
+    (err, result) => {
+      console.log((err) ? `failed to create logins table\n` + err : 'successfully created logins table');
   });
 
   client.query('DROP FUNCTION IF EXISTS update_wrt_registration_func() CASCADE;',
