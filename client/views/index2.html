@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html ng-app="CommunityHack">
+  <head>
+    <title>CommunityHack</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link rel="stylesheet" href="/stylesheets/style.css" media="screen">
+  </head>
+  <body ng-controller="mainController">
+    <div class="container">
+      <div class="header">
+        <h1>CommunityHack</h1>
+        <hr>
+        <h1 class="lead">Register</h1>
+      </div>
+      <div class="user-form">
+        <form>
+          <div class="form-group">
+            <input type="text" class="form-control input-lg" placeholder="firstName" ng-model="formData.firstName">
+            <input type="text" class="form-control input-lg" placeholder="lastName" ng-model="formData.lastName">
+            <input type="text" class="form-control input-lg" placeholder="email" ng-model="formData.email">
+            <input type="number" class="form-control input-lg" placeholder="year" ng-model="formData.year">
+            <input type="text" class="form-control input-lg" placeholder="teammate" ng-model="formData.teammate">
+          </div>
+          <button type="submit" class="btn btn-primary btn-lg btn-block" ng-click="createUser()">Register</button>
+        </form>
+      </div>
+      <br>
+      <div class="col-md-12 table-header"><h4>Existing Users</h4></div>
+      <div class="table col-md-12">
+        <div class="row">
+          <div class="cell">First Name</div>
+          <div class="cell">Last Name</div>
+          <div class="cell">Email</div>
+          <div class="cell">Year</div>
+        </div>
+        <div class="row" ng-repeat="user in userData">
+          <div class="cell">{{ user.firstName }}</div>
+          <div class="cell">{{ user.lastName }}</div>
+          <div class="cell">{{ user.email }}</div>
+          <div class="cell">{{ user.year }}</div>
+          <div class="cell"><input type="submit" value="Delete" ng-click="deleteUser(user.userId)"></input></div>
+        </div>
+      </div>
+    </div>
+    <script src="//code.jquery.com/jquery-2.2.4.min.js" type="text/javascript"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.6/angular.min.js"></script>
+    <script src="javascripts/app.js"></script>
+  </body>
+</html>
