@@ -27,7 +27,7 @@ angular.module('CommunityHack', [])
   };
   // Delete a user
   $scope.deleteUser = (userId) => {
-    $http.delete('/api/v1/users/' + userId)
+    $http.delete('/api/v1/user/' + userId)
     .success((data) => {
       $scope.userData = data;
       console.log(data);

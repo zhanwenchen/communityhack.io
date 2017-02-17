@@ -52,7 +52,7 @@ router.get('/api/v1/users', (req, res, next) => {
     }
     // SQL Query > Select Data
     const query = client.query(
-      'SELECT "firstName", "lastName", "email", "year" FROM "users" \
+      'SELECT "userId", "firstName", "lastName", "email", "year" FROM "users" \
       ORDER BY "lastName" ASC;');
     // Stream results back one row at a time
     query.on('row', (row) => {
@@ -175,7 +175,7 @@ router.delete('/api/v1/user/:userId', (req, res, next) => {
     // SQL Query > Delete Data
     client.query('DELETE FROM "users" WHERE "userId"=($1)', [id]);
     // SQL Query > Select Data
-    var query = client.query('SELECT "firstName", "lastName", "email", "year" FROM "users" ORDER BY "lastName" ASC;');
+    var query = client.query('SELECT "userId", "firstName", "lastName", "email", "year" FROM "users" ORDER BY "lastName" ASC;');
     // Stream results back one row at a time
     query.on('row', (row) => {
       results.push(row);

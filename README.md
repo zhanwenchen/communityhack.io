@@ -35,9 +35,11 @@
 
   ``$ node server/models/database_init.js``
 
-5. (In progress) Start the web app by
+5. Install Node modules required for deployment
 
-6. (In progress) Start the web app by
+  ``$ npm install``
+
+6. Start the web app by
 
   ``$ npm start``
 
