@@ -114,6 +114,52 @@ router.post('/api/v1/users', (req, res, next) => {
   });
 });
 
+/ Create a new user by submitting a POST form
+router.post('/api/v1/users/json', (req, res, next) => {
+  // const results = [];
+  // Grab data from http request
+  const data = {firstName: req.body.firstName,
+                lastName: req.body.lastName,
+                email: req.body.email,
+                year: req.body.year
+                }
+  // console.log("data: %j", data);
+  // Get a Postgres client from the connection pool
+  pg.connect(connectionString, (err, client, done) => {
+    // Handle connection errors
+    if(err) {
+      done();
+      console.log(err);
+      return res.status(500).json({success: false, data: err});
+    }
+    // SQL Query > Insert Data
+    client.query(
+      'INSERT INTO "users" \
+        ("firstName", "lastName", "email", "year") \
+      VALUES \
+        ($1, $2, $3, $4);',
+      [data.firstName, data.lastName, data.email, data.year]
+    , (err) => {
+      if (err) {
+        console.log(err)
+      } else {
+        return res.json({SUCCESS: data});
+      }
+    });
+    // // Then get the updated results
+    // const query = client.query('SELECT * FROM users ORDER BY lastName ASC;');
+    // // Stream results back one row at a time
+    // query.on('row', (row) => {
+    //   results.push(row);
+    // });
+    // // After all data is returned, close connection and return results
+    // query.on('end', () => {
+    //   done();
+    //   return res.json(results);
+    // });
+  });
+});
+
 // Update an existing user
 router.put('/api/v1/user/:userId', (req, res, next) => {
   const results = [];
