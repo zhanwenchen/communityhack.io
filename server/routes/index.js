@@ -114,7 +114,7 @@ router.post('/api/v1/users', (req, res, next) => {
   });
 });
 
-/ Create a new user by submitting a POST form
+// Create a new user by submitting a POST form
 router.post('/api/v1/users/json', (req, res, next) => {
   // const results = [];
   // Grab data from http request
