@@ -43,4 +43,4 @@
 
   ``$ npm start``
 
-7. In your browser, visit http://localhost:3000/. Voila!
+7. In your browser, visit http://localhost:8080/. Voila!
