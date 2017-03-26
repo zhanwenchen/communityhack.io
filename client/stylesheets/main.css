@@ -2273,11 +2273,11 @@ section h1.section-title {
     line-height: 1.3em;
     font-weight: 100;
     margin-bottom: 0.4em;
-    color: #800000
+    color: #color: #d66790;
 }
 
 section.red {
-    background-color: #800000;
+    background-color: #d66790;
     color: white
 }
 
@@ -2335,7 +2335,7 @@ input:-ms-input-placeholder {
 }
 
 a {
-    color: #800000;
+    color: #d66790;
     text-decoration: underline;
     transition: color 0.3s
 }
@@ -2403,8 +2403,8 @@ button.is-done .icon,.button.is-done .icon {
 }
 
 button:hover,.button:hover {
-    background-color: #800000;
-    border-color: #800000
+    background-color: #d66790;
+    border-color: #d66790
 }
 
 button:hover .text,.button:hover .text {
@@ -2455,7 +2455,7 @@ p.large {
 }
 
 .register-button .event-ticketing h3 {
-    color: #800000!important
+    color: #d66790!important
 }
 
 .social-links {
@@ -2486,7 +2486,7 @@ p.large {
 }
 
 .animation-container .animated {
-    background: #800000;
+    background: #d66790;
     position: absolute;
     top: 0
 }
@@ -2805,7 +2805,7 @@ section.faq ul.faq-container li.question-group.is-open:hover {
 }
 
 section.faq ul.faq-container li.question-group.is-open:hover .icon {
-    color: #800000
+    color: #d66790
 }
 
 section.faq ul.faq-container li.question-group .question {
@@ -2856,7 +2856,7 @@ section.faq ul.faq-container li.question-group .question .icon.icon-close {
 }
 
 section.faq ul.faq-container li.question-group .question:hover {
-    color: #800000
+    color: #d66790
 }
 
 section.faq ul.faq-container li.question-group .answer {
@@ -2878,7 +2878,7 @@ section.faq ul.faq-container li.question-group .answer:before {
     right: 16px;
     top: 1px;
     height: 2px;
-    background-color: #800000
+    background-color: #d66790
 }
 
 section.faq ul.faq-container li.question-group .answer p {
@@ -2886,7 +2886,7 @@ section.faq ul.faq-container li.question-group .answer p {
 }
 
 section.faq ul.faq-container li.question-group .answer a {
-    color: #800000
+    color: #d66790
 }
 
 section.faq p.large {
@@ -2952,7 +2952,7 @@ section.sponsors .sponsor-container img.nvite-widget-avatar {
 }
 
 section.sponsors .sponsor-container .nvite-context-sponsor p.nvite-tooltip span {
-    background-color: #800000;
+    background-color: #d66790;
     font-family: "Lato",sans-serif
 }
 
@@ -2961,7 +2961,7 @@ section.sponsors .sponsor-container .nvite-context-sponsor p.nvite-tooltip span 
 }
 
 section.sponsors .sponsor-container .nvite-context-sponsor p.nvite-tooltip:after {
-    border-top: 13px solid #800000
+    border-top: 13px solid #d66790
 }
 
 section.sponsors .sponsor-container p.nvite-context-sponsor {
@@ -2970,6 +2970,41 @@ section.sponsors .sponsor-container p.nvite-context-sponsor {
 
 section.sponsors p.large {
     text-align: center
+}
+
+section.sponsors img {
+  /*min-height: 100px;*/
+  /*min-width: 100%;*/
+  max-width: 85%;
+  max-height: 85%;
+  /*clear: both;*/
+  /*max-width: 100%;
+  max-height: 100%;
+  vertical-align: middle;
+  margin: 0 auto;
+  display: inline-block; */
+  position: absolute;
+  margin: auto;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+section.sponsors div.col-md-12 {
+  display: flex;
+}
+
+section.sponsors div.col-md-4 {
+  width: 200px;
+  height: 200px;
+  /*max-height: 200px;*/
+  /*max-width: 200px;*/
+  /*height: 100%;*/
+  vertical-align: middle;
+  align-items: stretch;
+  text-align: center;
+
 }
 
 .animation-container.horizontal.sponsors {
@@ -3002,7 +3037,7 @@ section.schedule ul.day {
 
 section.schedule ul.day .day-title {
     box-sizing: border-box;
-    color: #800000;
+    color: #d66790;
     display: inline-block;
     margin-left: -50px;
     width: 50%;
@@ -3049,7 +3084,7 @@ section.schedule ul.day li.item:after {
 
 section.schedule ul.day li.item h6.time {
     display: inline-block;
-    color: #800000;
+    color: #d66790;
     font-family: "Lato",sans-serif;
     box-sizing: border-box;
     float: left;
@@ -3142,7 +3177,7 @@ section.map .info-circle {
     width: 250px;
     height: 200px;
     border-radius: 8px;
-    color: #800000;
+    color: #d66790;
     background: white;
     position: absolute;
     z-index: 10;
@@ -3168,8 +3203,8 @@ section.map .info-circle .info-container .address {
 section.map .info-circle .info-container .button {
     width: 60%;
     margin-top: 10px;
-    border-color: #800000;
-    background-color: #800000;
+    border-color: #d66790;
+    background-color: #d66790;
     font-weight: normal
 }
 
@@ -3203,5 +3238,5 @@ section.register .container .register-button-block.bottom {
 
 section.register button.register-button:hover {
     background: white;
-    color: #800000
+    color: #d66790
 }
