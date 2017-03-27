@@ -3008,6 +3008,19 @@ section.sponsors div.col-md-4 {
 
 }
 
+
+section.sponsors div.col-md-3 {
+  width: 200px;
+  height: 200px;
+  /*max-height: 200px;*/
+  /*max-width: 200px;*/
+  /*height: 100%;*/
+  vertical-align: middle;
+  align-items: stretch;
+  text-align: center;
+
+}
+
 .animation-container.horizontal.sponsors {
     max-width: 850px;
     left: 25px
